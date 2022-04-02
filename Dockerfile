@@ -17,7 +17,8 @@ RUN  wget -q -O opengfx-${OPENGFX_VERSION}.zip \
     rm -rf opengfx-*.tar opengfx-*.zip
 RUN cp -r /TDD/build/ /tdd
 RUN rm -rf /TDD
-RUN apt-get remove -y wget unzip git build-essential 
+RUN rm -rf /tdd/CMakeFiles
+RUN rm -rf /tdd/src
 
 FROM debian:bullseye-slim as main
 COPY --from=build /tdd /tdd
